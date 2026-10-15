@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Secrets / local config
+.env
+*.env
+!.env.example
+
+# Logs and artifacts
+*.log
+pcaps/*.pcap
+suricata/logs/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Docker
+.docker/

@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  suricata-sensor:
+    image: jasonish/suricata:latest
+    container_name: suricata-sensor
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    environment:
+      - SURICATA_OPTIONS=-i eth0
+    volumes:
+      - ./suricata/etc:/etc/suricata
+      - ./suricata/logs:/var/log/suricata
+      - ./pcaps:/pcaps
+    profiles: ["suricata"]
+    # NOTE: On Windows, mount a capture interface via tcpdump or run Suricata on a Linux VM.
+
+# Usage:
+#   docker compose --profile suricata config
+#   docker compose --profile suricata up -d
+#   docker compose --profile suricata logs -f
